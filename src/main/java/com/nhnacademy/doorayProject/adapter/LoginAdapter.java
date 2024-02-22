@@ -1,7 +1,9 @@
 package com.nhnacademy.doorayProject.adapter;
 
-import org.springframework.http.HttpStatus;
+import com.nhnacademy.doorayProject.dto.UserLoginRequest;
+import org.springframework.http.ResponseEntity;
 
 public interface LoginAdapter {
-    HttpStatus login(String userId, String password);
+    ResponseEntity<Void> login(UserLoginRequest userLoginRequest);
+
 }
