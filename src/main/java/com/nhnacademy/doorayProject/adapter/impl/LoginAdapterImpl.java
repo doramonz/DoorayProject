@@ -9,13 +9,12 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Repository;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
 @Setter
-@Adapter
+@Adapter("loginAdapter")
 public class LoginAdapterImpl implements LoginAdapter {
     private RestTemplate restTemplate;
     private DataBaseUrl dataBaseUrl;
