@@ -2,10 +2,7 @@ package com.nhnacademy.doorayProject.entity;
 
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Getter
@@ -19,6 +16,7 @@ public class Project {
 
     @Id
     @Column(name = "project_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int projectId;
 
     private String name;
