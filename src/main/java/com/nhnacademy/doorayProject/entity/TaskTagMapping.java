@@ -45,9 +45,9 @@ public class TaskTagMapping {
     @NoArgsConstructor
     public static class Pk implements Serializable {
 
-        private int taskId;
+        private Integer taskId;
 
 
-        private int tagId;
+        private Integer tagId;
     }
 }

@@ -14,10 +14,10 @@ public class Comment {
     @Id
     @Column(name = "commnet_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-     private int commentId;
+     private Integer commentId;
 
     @Column(name = "user_id")
-    private int user;
+    private Integer user;
 
     @ManyToOne
     @JoinColumn(name = "task_id")

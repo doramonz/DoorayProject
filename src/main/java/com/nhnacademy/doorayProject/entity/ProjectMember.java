@@ -15,7 +15,7 @@ import java.io.Serializable;
 public class ProjectMember {
 
     @EmbeddedId
-    private ProjectMemberPk pk;
+    private Pk pk;
 
     @Column(name = "auth")
     private String auth;
@@ -34,10 +34,10 @@ public class ProjectMember {
     @Setter
     @Getter
     @Embeddable
-    public static class ProjectMemberPk implements Serializable {
+    public static class Pk implements Serializable {
 
         @Column(name = "user_id")
         private String userId;
-        private int projectId;
+        private Integer projectId;
     }
 }
