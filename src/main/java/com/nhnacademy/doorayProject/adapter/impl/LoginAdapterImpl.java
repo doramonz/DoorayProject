@@ -1,6 +1,7 @@
 package com.nhnacademy.doorayProject.adapter.impl;
 
 import com.nhnacademy.doorayProject.adapter.LoginAdapter;
+import com.nhnacademy.doorayProject.annotation.Adapter;
 import com.nhnacademy.doorayProject.config.DataBaseUrl;
 import com.nhnacademy.doorayProject.dto.UserLoginDto;
 import lombok.Setter;
@@ -14,7 +15,7 @@ import org.springframework.web.client.RestTemplate;
 import java.util.List;
 
 @Setter
-@Repository
+@Adapter
 public class LoginAdapterImpl implements LoginAdapter {
     private RestTemplate restTemplate;
     private DataBaseUrl dataBaseUrl;
