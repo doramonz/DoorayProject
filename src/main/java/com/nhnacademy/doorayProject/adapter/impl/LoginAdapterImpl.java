@@ -2,7 +2,7 @@ package com.nhnacademy.doorayProject.adapter.impl;
 
 import com.nhnacademy.doorayProject.adapter.LoginAdapter;
 import com.nhnacademy.doorayProject.config.DataBaseUrl;
-import com.nhnacademy.doorayProject.dto.UserLoginRequest;
+import com.nhnacademy.doorayProject.dto.UserLoginDto;
 import lombok.Setter;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -19,11 +19,11 @@ public class LoginAdapterImpl implements LoginAdapter {
     private RestTemplate restTemplate;
     private DataBaseUrl dataBaseUrl;
     @Override
-    public ResponseEntity<Void> login(UserLoginRequest userLoginRequest) {
+    public ResponseEntity<Void> login(UserLoginDto userLoginDto) {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         headers.setAccept(List.of(MediaType.APPLICATION_JSON));
-        HttpEntity<UserLoginRequest> request = new HttpEntity<>(userLoginRequest, headers);
+        HttpEntity<UserLoginDto> request = new HttpEntity<>(userLoginDto, headers);
         return restTemplate.postForEntity(dataBaseUrl.getAddress() + "/login", request, Void.class);
     }
 

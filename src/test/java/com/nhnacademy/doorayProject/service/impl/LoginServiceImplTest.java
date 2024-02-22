@@ -1,7 +1,7 @@
 package com.nhnacademy.doorayProject.service.impl;
 
 import com.nhnacademy.doorayProject.adapter.LoginAdapter;
-import com.nhnacademy.doorayProject.dto.UserLoginRequest;
+import com.nhnacademy.doorayProject.dto.UserLoginDto;
 import com.nhnacademy.doorayProject.exeption.LoginFailException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -22,17 +22,17 @@ class LoginServiceImplTest {
 
     @Test
     void login_success() {
-        UserLoginRequest userLoginRequest = new UserLoginRequest("userId", "password");
+        UserLoginDto userLoginDto = new UserLoginDto("userId", "password");
         ResponseEntity<Void> response = ResponseEntity.ok().build();
-        Mockito.when(loginAdapter.login(userLoginRequest)).thenReturn(response);
+        Mockito.when(loginAdapter.login(userLoginDto)).thenReturn(response);
 
-        Assertions.assertDoesNotThrow(() -> loginService.login(userLoginRequest));
-        Mockito.verify(loginAdapter).login(userLoginRequest);
+        Assertions.assertDoesNotThrow(() -> loginService.login(userLoginDto));
+        Mockito.verify(loginAdapter).login(userLoginDto);
     }
 
     @Test
     void login_fail() {
-        UserLoginRequest loginRequest = new UserLoginRequest("userId", "password");
+        UserLoginDto loginRequest = new UserLoginDto("userId", "password");
         ResponseEntity<Void> response = ResponseEntity.status(400).build();
         Mockito.when(loginAdapter.login(loginRequest)).thenReturn(response);
 

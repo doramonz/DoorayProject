@@ -1,8 +1,8 @@
 package com.nhnacademy.doorayProject.service;
 
-import com.nhnacademy.doorayProject.dto.UserLoginRequest;
+import com.nhnacademy.doorayProject.dto.UserLoginDto;
 
 public interface LoginService {
-    void login(UserLoginRequest userLoginRequest);
+    void login(UserLoginDto userLoginDto);
 
 }
