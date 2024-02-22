@@ -1,4 +1,4 @@
-package com.nhnacademy.doorayproject.entity;
+package com.nhnacademy.doorayProject.entity;
 
 import lombok.*;
 
