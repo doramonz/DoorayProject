@@ -2,8 +2,10 @@ package com.nhnacademy.doorayProject.dto;
 
 public interface ProjectDto {
 
-     String getUserId();
+     Integer getProjectId();
 
      String getName();
+
+     String getStatus();
 
 }

@@ -13,18 +13,18 @@ public class ProjectService {
     private final ProjectAdaptor adaptor;
 
 
-    public ProjectDto addProject(Project project) {
+    public ProjectDto addProject(ProjectDto project) {
         return adaptor.addProject(project);
     }
     public ProjectService(ProjectAdaptor adaptor) {
         this.adaptor = adaptor;
     }
 
-    public List<Project> getProjects(String userId) {
+    public List<ProjectDto> getProjects(String userId) {
         return adaptor.getProjects(userId);
     }
 
-    public ProjectDto updateProject(Integer projectId, Project project) {
+    public ProjectDto updateProject(Integer projectId, ProjectDto project) {
         return adaptor.updateProject(projectId, project);
     }
 
@@ -32,7 +32,7 @@ public class ProjectService {
         return adaptor.deleteProject(projectId);
     }
 
-    public Project getProject(Integer projectId) {
+    public ProjectDto getProject(Integer projectId) {
         return adaptor.getProject(projectId);
     }
 

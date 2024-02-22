@@ -23,11 +23,11 @@ public class ProjectAdaptorImpl implements ProjectAdaptor {
     }
 
     @Override
-    public ProjectDto addProject(Project project) {
+    public ProjectDto addProject(ProjectDto project) {
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
         httpHeaders.setAccept(List.of(MediaType.APPLICATION_JSON));
-        HttpEntity<Project> requestEntity = new HttpEntity<>(project, httpHeaders);
+        HttpEntity<ProjectDto> requestEntity = new HttpEntity<>(project, httpHeaders);
 
         ResponseEntity<ProjectDto> exchange = restTemplate.exchange(dataBaseUrl.getAddress() + "/projects/upload", HttpMethod.POST, requestEntity, new ParameterizedTypeReference<ProjectDto>() {
                 });
@@ -36,27 +36,27 @@ public class ProjectAdaptorImpl implements ProjectAdaptor {
     }
 
     @Override
-    public List<Project> getProjects(String userId) {
+    public List<ProjectDto> getProjects(String userId) {
 
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
         httpHeaders.setAccept(List.of(MediaType.APPLICATION_JSON));
 
         HttpEntity<String> requestEntity = new HttpEntity<>(httpHeaders);
-        ResponseEntity<List<Project>> exchange = restTemplate.exchange(dataBaseUrl.getAddress()
+        ResponseEntity<List<ProjectDto>> exchange = restTemplate.exchange(dataBaseUrl.getAddress()
                         + "/projects/" + userId + "/list"
-                , HttpMethod.GET, requestEntity, new ParameterizedTypeReference<List<Project>>() {
+                , HttpMethod.GET, requestEntity, new ParameterizedTypeReference<List<ProjectDto>>() {
                 });
         return  exchange.getBody();
     }
 
     @Override
-    public ProjectDto updateProject(Integer projectId,Project project) {
+    public ProjectDto updateProject(Integer projectId,ProjectDto project) {
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
         httpHeaders.setAccept(List.of(MediaType.APPLICATION_JSON));
 
-        HttpEntity<Project> requestEntity = new HttpEntity<>(project,httpHeaders);
+        HttpEntity<ProjectDto> requestEntity = new HttpEntity<>(project,httpHeaders);
         ResponseEntity<ProjectDto> exchange = restTemplate.exchange(dataBaseUrl.getAddress() + "/projects/" + projectId + "/update"
                 , HttpMethod.PUT, requestEntity, new ParameterizedTypeReference<ProjectDto>() {
                 });
@@ -77,14 +77,14 @@ public class ProjectAdaptorImpl implements ProjectAdaptor {
     }
 
     @Override
-    public Project getProject(int projectId) {
+    public ProjectDto getProject(int projectId) {
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
         httpHeaders.setAccept(List.of(MediaType.APPLICATION_JSON));
 
         HttpEntity<String> requestEntity = new HttpEntity<>(httpHeaders);
-        ResponseEntity<Project> exchange = restTemplate.exchange(dataBaseUrl.getAddress() + "/projects/" + projectId,
-                HttpMethod.GET, requestEntity, new ParameterizedTypeReference<Project>() {
+        ResponseEntity<ProjectDto> exchange = restTemplate.exchange(dataBaseUrl.getAddress() + "/projects/" + projectId,
+                HttpMethod.GET, requestEntity, new ParameterizedTypeReference<ProjectDto>() {
                 });
 
         return exchange.getBody();

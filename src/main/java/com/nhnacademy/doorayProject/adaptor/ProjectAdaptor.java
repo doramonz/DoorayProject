@@ -9,17 +9,17 @@ import java.util.List;
 
 public interface ProjectAdaptor {
 
-    ProjectDto addProject(Project project);
+    ProjectDto addProject(ProjectDto project);
 
-    List<Project> getProjects(String userId);
+    List<ProjectDto> getProjects(String userId);
 
 
-    ProjectDto updateProject(Integer projectId,Project project);
+    ProjectDto updateProject(Integer projectId,ProjectDto project);
 
 
     String deleteProject(Integer projectId);
 
-    Project getProject(int projectId);
+    ProjectDto getProject(int projectId);
 
     ProjectMemberDto addProjectMemeber(Integer projectId,ProjectMemberDto projectMemberDto);
 
