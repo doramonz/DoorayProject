@@ -38,6 +38,10 @@ public class LoginController {
         } catch (Exception e) {
             return "login/login";
         }
+        //todo 여기에 로그인 성공시 UserInfoDto 받아와서 세션에 추가하는 코드 추가
+//        UserInfoDto userInfoDto = userService.getUserInfo(userLoginDto.getUserId());
+//        request.getSession(true).setAttribute("user", userInfoDto);
+
         return "redirect:/";
     }
 }

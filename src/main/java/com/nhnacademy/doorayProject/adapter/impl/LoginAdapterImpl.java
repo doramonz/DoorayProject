@@ -24,7 +24,7 @@ public class LoginAdapterImpl implements LoginAdapter {
         headers.setContentType(MediaType.APPLICATION_JSON);
         headers.setAccept(List.of(MediaType.APPLICATION_JSON));
         HttpEntity<UserLoginDto> request = new HttpEntity<>(userLoginDto, headers);
-        return restTemplate.postForEntity(dataBaseUrl.getAddress() + "/login", request, Void.class);
+        return restTemplate.postForEntity(dataBaseUrl.getAddress() + "/accounts/login", request, Void.class);
     }
 
 }

@@ -30,10 +30,10 @@
                 <div class="form-header">
                     <div id="title" class="title">NHN 아카데미에 로그인합니다.</div>
                 </div>
-                <form class="form-body" id="idp-login-form" th:action="@{/idp/login}" method="post">
+                <form class="form-body" id="idp-login-form" th:action="@{'/login'}" method="post" th:object="${UserLoginDto}">
                     <div class="form-item">
                         <div class="bottom-lined-text-field w80" id="userCode">
-                            <input type="text" name="userCode" id="userCode-input" autofocus=""
+                            <input type="text" name="userId" id="userCode-input" autofocus=""
                                    placeholder="아이디" maxlength="100">
                         </div>
                     </div>
@@ -45,7 +45,7 @@
                     </div>
                     <div class="form-footer">
                         <div class="form-footer__primary-button">
-                            <button id="footer-primary-button" class="btn contained" type="button">
+                            <button id="footer-primary-button" class="btn contained" type="submit">
                                 <span>로그인</span>
                             </button>
                         </div>
