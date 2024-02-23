@@ -4,22 +4,35 @@ import com.nhnacademy.doorayProject.adaptor.ProjectAdaptor;
 import com.nhnacademy.doorayProject.config.DataBaseUrl;
 import com.nhnacademy.doorayProject.dto.ProjectDto;
 import com.nhnacademy.doorayProject.dto.ProjectMemberDto;
+import com.nhnacademy.doorayProject.dto.UserDto;
 import com.nhnacademy.doorayProject.entity.Project;
+import com.nhnacademy.doorayProject.entity.User;
+import com.sun.xml.bind.v2.TODO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.*;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 @Component
 public class ProjectAdaptorImpl implements ProjectAdaptor {
 
     private final RestTemplate restTemplate;
     private final DataBaseUrl dataBaseUrl;
+    @Autowired
+    private HttpServletRequest request;
+
+    private HttpSession session;
+    private UserDto user;
 
     public ProjectAdaptorImpl(RestTemplate restTemplate, DataBaseUrl dataBaseUrl) {
         this.restTemplate = restTemplate;
         this.dataBaseUrl = dataBaseUrl;
+         session = request.getSession();
+         user = (UserDto) session.getAttribute("user");
     }
 
     @Override
@@ -49,6 +62,8 @@ public class ProjectAdaptorImpl implements ProjectAdaptor {
                 });
         return  exchange;
     }
+    //TODO 업데이트 유저 확인 부분 수정 해야함
+    //TODO 주소에 userId 넣을것 으로 예상
 
     @Override
     public ResponseEntity<ProjectDto> updateProject(Integer projectId,ProjectDto project) {
@@ -69,7 +84,7 @@ public class ProjectAdaptorImpl implements ProjectAdaptor {
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
         httpHeaders.setAccept(List.of(MediaType.APPLICATION_JSON));
 
-        HttpEntity<String> requestEntity = new HttpEntity<>(httpHeaders);
+        HttpEntity<UserDto> requestEntity = new HttpEntity<>(user,httpHeaders);
         ResponseEntity<String> exchange = restTemplate.exchange(dataBaseUrl.getAddress() + "/projects/" + projectId + "/delete",
                 HttpMethod.DELETE, requestEntity, new ParameterizedTypeReference<String>() {
                 });

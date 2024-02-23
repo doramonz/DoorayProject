@@ -1,0 +1,11 @@
+POST /projects/upload
+Host: localhost:8080
+Content-Type: application/json
+
+{
+    "projectId" : 12,
+    "name" : "first",
+     "status": "aa"
+}
+
+###
