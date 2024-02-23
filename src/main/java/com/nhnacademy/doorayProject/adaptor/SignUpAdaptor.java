@@ -5,5 +5,5 @@ import org.springframework.http.ResponseEntity;
 
 
 public interface SignUpAdaptor {
-    ResponseEntity<Void> signUp(RegisterDto registerDto);
+    ResponseEntity<RegisterDto> signUp(RegisterDto registerDto);
 }

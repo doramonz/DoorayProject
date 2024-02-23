@@ -7,6 +7,7 @@ import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.*;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -24,7 +25,7 @@ public class SingUpAdaptorImpl implements SignUpAdaptor {
     }
 
     @Override
-    public ResponseEntity<Void> signUp( RegisterDto registerDto) {
+    public ResponseEntity<RegisterDto> signUp(RegisterDto registerDto) {
 
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
@@ -32,10 +33,12 @@ public class SingUpAdaptorImpl implements SignUpAdaptor {
 
         HttpEntity<RegisterDto> requestEntity = new HttpEntity<>(registerDto, httpHeaders);
 
-        return restTemplate.exchange(dataBaseUrl+"/accounts",
+        ResponseEntity<RegisterDto> response = restTemplate.exchange(dataBaseUrl.getAddress()+"/accounts/register",
                 HttpMethod.POST,
                 requestEntity,
-                new ParameterizedTypeReference<>() {
+                new ParameterizedTypeReference<RegisterDto>() {
                 });
+
+        return response;
     }
 }
