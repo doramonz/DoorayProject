@@ -1,0 +1,11 @@
+###
+POST http://localhost:8080/accounts/register?userId=aaaa
+Content-Type: application/x-www-form-urlencoded
+
+# json 방식이 아니라 form 방식으로 제출해야한다
+#{
+#"userId":"6",
+#"password":"2",
+#"userName":"dkdk",
+#"email":"a@dooray.com"
+#}
