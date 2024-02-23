@@ -1,48 +1,23 @@
 package com.nhnacademy.doorayProject.service;
 
-import com.nhnacademy.doorayProject.adaptor.ProjectAdaptor;
 import com.nhnacademy.doorayProject.dto.ProjectDto;
 import com.nhnacademy.doorayProject.dto.ProjectMemberDto;
-import com.nhnacademy.doorayProject.entity.Project;
-import org.springframework.stereotype.Service;
+import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
-@Service
-public class ProjectService {
-    private final ProjectAdaptor adaptor;
+public interface ProjectService {
+    public ProjectDto addProject(ProjectDto project);
 
+    public List<ProjectDto> getProjects(String userId);
 
-    public ProjectDto addProject(ProjectDto project) {
-        return adaptor.addProject(project);
-    }
-    public ProjectService(ProjectAdaptor adaptor) {
-        this.adaptor = adaptor;
-    }
+    public ProjectDto updateProject(Integer projectId, ProjectDto project);
 
-    public List<ProjectDto> getProjects(String userId) {
-        return adaptor.getProjects(userId);
-    }
+    public String deleteProject(Integer projectId);
 
-    public ProjectDto updateProject(Integer projectId, ProjectDto project) {
-        return adaptor.updateProject(projectId, project);
-    }
+    public ProjectDto getProject(Integer projectId);
 
-    public String deleteProject(Integer projectId) {
-        return adaptor.deleteProject(projectId);
-    }
+    public ProjectMemberDto addProjectMemeber(Integer projectId, ProjectMemberDto projectMemberDto);
 
-    public ProjectDto getProject(Integer projectId) {
-        return adaptor.getProject(projectId);
-    }
-
-    public ProjectMemberDto addProjectMemeber(Integer projectId,ProjectMemberDto projectMemberDto) {
-        return adaptor.addProjectMemeber(projectId, projectMemberDto);
-    }
-    public ProjectMemberDto deleteProjectMember(Integer projectId) {
-        return adaptor.deleteProjectMember(projectId);
-    }
-
-
-
+    public ProjectMemberDto deleteProjectMember(Integer projectId);
 }

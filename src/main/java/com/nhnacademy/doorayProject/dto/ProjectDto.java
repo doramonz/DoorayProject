@@ -1,11 +1,14 @@
 package com.nhnacademy.doorayProject.dto;
 
-public interface ProjectDto {
+import lombok.Data;
 
-     Integer getProjectId();
+@Data
+public class ProjectDto {
 
-     String getName();
+     Integer projectId;
 
-     String getStatus();
+     String name;
+
+     String status;
 
 }

@@ -1,14 +1,10 @@
 package com.nhnacademy.doorayProject.controller;
 
 
-import com.nhnacademy.doorayProject.config.DataBaseUrl;
 import com.nhnacademy.doorayProject.dto.ProjectDto;
 import com.nhnacademy.doorayProject.entity.Project;
-import com.nhnacademy.doorayProject.service.ProjectService;
-import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.http.*;
+import com.nhnacademy.doorayProject.service.Impl.ProjectServiceImpl;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestTemplate;
 
 
 import java.util.List;
@@ -17,15 +13,17 @@ import java.util.List;
 @RequestMapping("/projects")
 public class MainPageController {
 
-    private final ProjectService service;
+    private final ProjectServiceImpl service;
 
-    public MainPageController(ProjectService service) {
+    public MainPageController(ProjectServiceImpl service) {
         this.service = service;
     }
 
     @PostMapping("/upload")
-    public ProjectDto addProject(@RequestBody ProjectDto project) {
-        return service.addProject(project);
+    public String addProject(@RequestBody ProjectDto project) {
+
+        service.addProject(project);
+        return null;
     }
 
     @PostMapping("/{userId}/list")

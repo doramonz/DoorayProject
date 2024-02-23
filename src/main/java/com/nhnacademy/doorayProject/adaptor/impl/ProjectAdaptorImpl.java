@@ -23,7 +23,7 @@ public class ProjectAdaptorImpl implements ProjectAdaptor {
     }
 
     @Override
-    public ProjectDto addProject(ProjectDto project) {
+    public ResponseEntity<ProjectDto> addProject(ProjectDto project) {
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
         httpHeaders.setAccept(List.of(MediaType.APPLICATION_JSON));
@@ -32,11 +32,11 @@ public class ProjectAdaptorImpl implements ProjectAdaptor {
         ResponseEntity<ProjectDto> exchange = restTemplate.exchange(dataBaseUrl.getAddress() + "/projects/upload", HttpMethod.POST, requestEntity, new ParameterizedTypeReference<ProjectDto>() {
                 });
 
-        return exchange.getBody();
+        return exchange;
     }
 
     @Override
-    public List<ProjectDto> getProjects(String userId) {
+    public ResponseEntity<List<ProjectDto>> getProjects(String userId) {
 
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
@@ -47,11 +47,11 @@ public class ProjectAdaptorImpl implements ProjectAdaptor {
                         + "/projects/" + userId + "/list"
                 , HttpMethod.GET, requestEntity, new ParameterizedTypeReference<List<ProjectDto>>() {
                 });
-        return  exchange.getBody();
+        return  exchange;
     }
 
     @Override
-    public ProjectDto updateProject(Integer projectId,ProjectDto project) {
+    public ResponseEntity<ProjectDto> updateProject(Integer projectId,ProjectDto project) {
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
         httpHeaders.setAccept(List.of(MediaType.APPLICATION_JSON));
@@ -60,11 +60,11 @@ public class ProjectAdaptorImpl implements ProjectAdaptor {
         ResponseEntity<ProjectDto> exchange = restTemplate.exchange(dataBaseUrl.getAddress() + "/projects/" + projectId + "/update"
                 , HttpMethod.PUT, requestEntity, new ParameterizedTypeReference<ProjectDto>() {
                 });
-        return exchange.getBody();
+        return exchange;
     }
 
     @Override
-    public String deleteProject(Integer projectId) {
+    public ResponseEntity<String> deleteProject(Integer projectId) {
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
         httpHeaders.setAccept(List.of(MediaType.APPLICATION_JSON));
@@ -73,11 +73,11 @@ public class ProjectAdaptorImpl implements ProjectAdaptor {
         ResponseEntity<String> exchange = restTemplate.exchange(dataBaseUrl.getAddress() + "/projects/" + projectId + "/delete",
                 HttpMethod.DELETE, requestEntity, new ParameterizedTypeReference<String>() {
                 });
-        return exchange.getBody();
+        return exchange;
     }
 
     @Override
-    public ProjectDto getProject(int projectId) {
+    public ResponseEntity<ProjectDto> getProject(int projectId) {
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
         httpHeaders.setAccept(List.of(MediaType.APPLICATION_JSON));
@@ -87,11 +87,11 @@ public class ProjectAdaptorImpl implements ProjectAdaptor {
                 HttpMethod.GET, requestEntity, new ParameterizedTypeReference<ProjectDto>() {
                 });
 
-        return exchange.getBody();
+        return exchange;
     }
 
     @Override
-    public ProjectMemberDto addProjectMemeber(Integer projectId,ProjectMemberDto projectMemberDto) {
+    public ResponseEntity<ProjectMemberDto> addProjectMemeber(Integer projectId,ProjectMemberDto projectMemberDto) {
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
         httpHeaders.setAccept(List.of(MediaType.APPLICATION_JSON));
@@ -102,11 +102,11 @@ public class ProjectAdaptorImpl implements ProjectAdaptor {
                 });
 
 
-        return exchange.getBody();
+        return exchange;
     }
 
     @Override
-    public ProjectMemberDto deleteProjectMember(Integer projectId) {
+    public ResponseEntity<ProjectMemberDto> deleteProjectMember(Integer projectId) {
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
         httpHeaders.setAccept(List.of(MediaType.APPLICATION_JSON));
@@ -117,6 +117,6 @@ public class ProjectAdaptorImpl implements ProjectAdaptor {
                 });
 
 
-        return exchange.getBody();
+        return exchange;
     }
 }

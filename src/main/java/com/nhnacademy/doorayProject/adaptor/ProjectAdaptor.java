@@ -9,20 +9,20 @@ import java.util.List;
 
 public interface ProjectAdaptor {
 
-    ProjectDto addProject(ProjectDto project);
+    ResponseEntity<ProjectDto> addProject(ProjectDto project);
 
-    List<ProjectDto> getProjects(String userId);
-
-
-    ProjectDto updateProject(Integer projectId,ProjectDto project);
+    ResponseEntity<List<ProjectDto>> getProjects(String userId);
 
 
-    String deleteProject(Integer projectId);
+    ResponseEntity<ProjectDto> updateProject(Integer projectId,ProjectDto project);
 
-    ProjectDto getProject(int projectId);
 
-    ProjectMemberDto addProjectMemeber(Integer projectId,ProjectMemberDto projectMemberDto);
+    ResponseEntity<String> deleteProject(Integer projectId);
 
-    ProjectMemberDto deleteProjectMember(Integer projectId);
+    ResponseEntity<ProjectDto> getProject(int projectId);
+
+    ResponseEntity<ProjectMemberDto> addProjectMemeber(Integer projectId,ProjectMemberDto projectMemberDto);
+
+    ResponseEntity<ProjectMemberDto> deleteProjectMember(Integer projectId);
 
 }
