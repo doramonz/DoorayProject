@@ -25,18 +25,18 @@ public class LoginController {
         if(user != null) {
             return "redirect:/";
         }
-        return "auth/login";
+        return "login/login";
     }
 
     @PostMapping("/login")
     public String postLogin(HttpServletRequest request, @Valid UserLoginDto userLoginDto, BindingResult bindingResult) {
         if(bindingResult.hasErrors()) {
-            return "auth/login";
+            return "login/login";
         }
         try {
             loginService.login(userLoginDto);
         } catch (Exception e) {
-            return "auth/login";
+            return "login/login";
         }
         return "redirect:/";
     }
