@@ -4,7 +4,7 @@ import com.nhnacademy.doorayProject.adapter.LoginAdapter;
 import com.nhnacademy.doorayProject.annotation.Adapter;
 import com.nhnacademy.doorayProject.config.DataBaseUrl;
 import com.nhnacademy.doorayProject.dto.UserLoginDto;
-import lombok.Setter;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -13,11 +13,11 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
-@Setter
+@RequiredArgsConstructor
 @Adapter("loginAdapter")
 public class LoginAdapterImpl implements LoginAdapter {
-    private RestTemplate restTemplate;
-    private DataBaseUrl dataBaseUrl;
+    private final RestTemplate restTemplate;
+    private final DataBaseUrl dataBaseUrl;
     @Override
     public ResponseEntity<Void> login(UserLoginDto userLoginDto) {
         HttpHeaders headers = new HttpHeaders();
