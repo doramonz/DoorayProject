@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+<table border="1">
+    <tbody>
+    <!-- todo view 구현 -->
+    <tr>
+        <th>아이디</th>
+        <td th:text="${user.userId}"></td>
+    </tr>
+    <tr>
+        <th>비밀번호</th>
+        <td th:text="${user.password}"></td>
+    </tr>
+    <tr>
+        <th>이름</th>
+        <td th:text="${user.userName}"></td>
+    </tr>
+    <tr>
+        <th>이메일</th>
+        <td th:text="${user.email}"></td>
+    </tr>
+    </tbody>
+</table>
+<!--<h1>유저 정보</h1>-->
+<!--<h2>아이디</h2>-->
+<!--<h3 th:text="${user.userId}"></h3>-->
+<!--<h2>비밀번호</h2>-->
+<!--<h3 th:text="${user.password}"></h3>-->
+<!--<h2>이름</h2>-->
+<!--<h3 th:text="${user.userName}"></h3>-->
+<!--<h2>이메일</h2>-->
+<!--<h3 th:text="${user.email}"></h3>-->
+</body>
+</html>
