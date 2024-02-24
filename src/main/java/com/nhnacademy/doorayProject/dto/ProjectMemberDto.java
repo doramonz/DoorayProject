@@ -1,10 +1,13 @@
 package com.nhnacademy.doorayProject.dto;
 
-public interface ProjectMemberDto {
+import lombok.Data;
 
-    String getMaster();
+@Data
+public class ProjectMemberDto {
 
-    String getSlave();
+    String master;
+
+    String slave;
 
 
 }

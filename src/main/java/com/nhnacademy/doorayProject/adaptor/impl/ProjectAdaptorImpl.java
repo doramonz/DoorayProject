@@ -20,17 +20,17 @@ public class ProjectAdaptorImpl implements ProjectAdaptor {
 
     private final RestTemplate restTemplate;
     private final DataBaseUrl dataBaseUrl;
-    @Autowired
-    private HttpServletRequest request;
-
-    private HttpSession session;
-    private UserDto user;
+//    @Autowired
+//    private HttpServletRequest request;
+//
+//    private HttpSession session;
+//    private UserDto user;
 
     public ProjectAdaptorImpl(RestTemplate restTemplate, DataBaseUrl dataBaseUrl) {
         this.restTemplate = restTemplate;
         this.dataBaseUrl = dataBaseUrl;
-         session = request.getSession();
-         user = (UserDto) session.getAttribute("user");
+//         session = request.getSession();
+//         user = (UserDto) session.getAttribute("user");
     }
 
     @Override
@@ -64,17 +64,25 @@ public class ProjectAdaptorImpl implements ProjectAdaptor {
     //TODO 주소에 userId 넣을것 으로 예상
 
     @Override
-    public ResponseEntity<UpdateProjectResponse> updateProject(Integer projectId, RequestProjectDto project) {
+    public ResponseEntity<UpdateProjectResponse> updateProject(Integer projectId, RequestProjectDto project,String userId) {
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
         httpHeaders.setAccept(List.of(MediaType.APPLICATION_JSON));
 
         HttpEntity<RequestProjectDto> requestEntity = new HttpEntity<>(project,httpHeaders);
-        ResponseEntity<UpdateProjectResponse> exchange = restTemplate.exchange(dataBaseUrl.getAddress() + "/projects/" + projectId + "/update"+user.getUserId()
+        ResponseEntity<UpdateProjectResponse> exchange = restTemplate.exchange(dataBaseUrl.getAddress() + "/projects/" + projectId + "/update/"+userId
                 , HttpMethod.PUT, requestEntity, new ParameterizedTypeReference<UpdateProjectResponse>() {
                 });
         return exchange;
     }
+
+    /**
+     *
+     * 현재 세션이 없어서 테스트 불가능
+     * 세션 있을시 위에 주석 해제 후
+     * HttpEntity<UserDto> requestEntity = new HttpEntity<>(user,httpHeaders);
+     *
+     */
 
     @Override
     public ResponseEntity<String> deleteProject(Integer projectId) {
@@ -82,7 +90,7 @@ public class ProjectAdaptorImpl implements ProjectAdaptor {
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
         httpHeaders.setAccept(List.of(MediaType.APPLICATION_JSON));
 
-        HttpEntity<UserDto> requestEntity = new HttpEntity<>(user,httpHeaders);
+        HttpEntity<UserDto> requestEntity = new HttpEntity<>(httpHeaders);
         ResponseEntity<String> exchange = restTemplate.exchange(dataBaseUrl.getAddress() + "/projects/" + projectId + "/delete",
                 HttpMethod.DELETE, requestEntity, new ParameterizedTypeReference<String>() {
                 });

@@ -13,7 +13,7 @@ public interface ProjectAdaptor {
     ResponseEntity<List<ProjectDto>> getProjects(String userId);
 
 
-    ResponseEntity<UpdateProjectResponse> updateProject(Integer projectId, RequestProjectDto project);
+    ResponseEntity<UpdateProjectResponse> updateProject(Integer projectId, RequestProjectDto project,String userId);
 
 
     ResponseEntity<String> deleteProject(Integer projectId);

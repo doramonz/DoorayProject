@@ -1,3 +1,13 @@
+GET /projects/test1/list
+Host: localhost:8080
+Content-Type: application/json
+
+###
+GET /projects/1
+Host: localhost:8080
+Content-Type: application/json
+
+###
 POST /projects/upload
 Host: localhost:8080
 Content-Type: application/json
@@ -9,3 +19,37 @@ Content-Type: application/json
 }
 
 ###
+PUT /projects/1/update/test1
+Host: localhost:8080
+Content-Type: application/json
+
+{
+  "name": "modify",
+  "status": "중지"
+}
+
+###
+DELETE /projects/1/delete
+Host: localhost:8080
+Content-Type: application/json
+
+###
+POST /projects/1/addMember
+Host: localhost:8080
+Content-Type: application/json
+
+{
+  "master": "test1",
+  "slave": "test3"
+}
+
+###
+
+DELETE /projects/1/deleteMember
+Host: localhost:8080
+Content-Type: application/json
+
+{
+  "master": "test1",
+  "slave": "test3"
+}

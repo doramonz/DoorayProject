@@ -2,7 +2,7 @@ package com.nhnacademy.doorayProject.controller;
 
 
 import com.nhnacademy.doorayProject.adaptor.ProjectAdaptor;
-import com.nhnacademy.doorayProject.dto.ProjectDto;
+import com.nhnacademy.doorayProject.dto.*;
 import com.nhnacademy.doorayProject.entity.Project;
 import com.nhnacademy.doorayProject.service.Impl.ProjectServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,24 +25,40 @@ public class MainPageController {
     }
 
     /**
-     *
      * @RequestBody부분 thymeleaf 로 html에서 데이터 받을시 @Modelattribute  사용해야함
-     *
      */
     @PostMapping("/upload")
     public ProjectDto addProject(@RequestBody ProjectDto project) {
 
-
         return service.addProject(project);
     }
 
-    @PostMapping("/{userId}/list")
-    public List<ProjectDto> getProjects(@PathVariable String userId) {
-
-
-        return service.getProjects(userId);
+    @PutMapping("/{projectId}/update/{userId}")
+    public UpdateProjectResponse updateProject(@PathVariable Integer projectId, @RequestBody RequestProjectDto projectDto, @PathVariable String userId) {
+        return service.updateProject(projectId, projectDto, userId);
     }
 
+    @DeleteMapping("/{projectId}/delete")
+    public String deleteProject(@PathVariable Integer projectId) {
+        return service.deleteProject(projectId);
+    }
 
+    @GetMapping("/{projectId}")
+    public ProjectNameStatusDto getProject(@PathVariable Integer projectId) {
+        return service.getProject(projectId);
+    }
 
+    @GetMapping("/{userId}/list")
+    public List<ProjectDto> getProjects(@PathVariable String userId) {
+        return service.getProjects(userId);
+    }
+    @PostMapping("/{projectId}/addMember")
+    public ProjectMemberDto addMember(@PathVariable Integer projectId, @RequestBody ProjectMemberDto projectMemberDto) {
+        return service.addProjectMemeber(projectId, projectMemberDto);
+    }
+
+    @DeleteMapping("/{projectId}/deleteMember")
+    public ProjectMemberDto deleteMember(@PathVariable Integer projectId, @RequestBody ProjectMemberDto projectMemberDto) {
+        return service.deleteProjectMember(projectId, projectMemberDto);
+    }
 }
