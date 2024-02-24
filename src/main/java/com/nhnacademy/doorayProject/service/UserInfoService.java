@@ -5,7 +5,8 @@ import com.nhnacademy.doorayProject.entity.User;
 
 import java.util.List;
 
-public interface LoginService {
-    void login(UserLoginDto userLoginDto);
-
+public interface UserInfoService {
+    User getUser(String userId);
+    List<User> getUserListIn(List<String> userIdList);
+    List<User> getUserList();
 }

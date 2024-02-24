@@ -2,7 +2,7 @@ package com.nhnacademy.doorayProject.service.impl;
 
 import com.nhnacademy.doorayProject.adapter.LoginAdapter;
 import com.nhnacademy.doorayProject.dto.UserLoginDto;
-import com.nhnacademy.doorayProject.exeption.LoginFailException;
+import com.nhnacademy.doorayProject.exeption.UserLoginFailException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -36,7 +36,7 @@ class LoginServiceImplTest {
         ResponseEntity<Void> response = ResponseEntity.status(400).build();
         Mockito.when(loginAdapter.login(loginRequest)).thenReturn(response);
 
-        Assertions.assertThrows(LoginFailException.class, () -> loginService.login(loginRequest));
+        Assertions.assertThrows(UserLoginFailException.class, () -> loginService.login(loginRequest));
         Mockito.verify(loginAdapter).login(loginRequest);
     }
 }

@@ -1,7 +1,7 @@
 package com.nhnacademy.doorayProject.controller;
 
 import com.nhnacademy.doorayProject.entity.User;
-import com.nhnacademy.doorayProject.exeption.LoginFailException;
+import com.nhnacademy.doorayProject.exeption.UserLoginFailException;
 import com.nhnacademy.doorayProject.service.LoginService;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -43,7 +43,7 @@ class LoginControllerTest {
 
     @Test
     void postLogin_withRequestParamAndFailLogin_status200() throws Exception {
-        Mockito.doThrow(new LoginFailException()).when(loginService).login(any());
+        Mockito.doThrow(new UserLoginFailException()).when(loginService).login(any());
         mockMvc.perform(post("/login").param("userId", "userId").param("password", "password2"))
                 .andExpect(status().isOk());
     }
