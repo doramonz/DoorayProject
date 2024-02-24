@@ -1,8 +1,7 @@
 package com.nhnacademy.doorayProject.service.Impl;
 
 import com.nhnacademy.doorayProject.adaptor.ProjectAdaptor;
-import com.nhnacademy.doorayProject.dto.ProjectDto;
-import com.nhnacademy.doorayProject.dto.ProjectMemberDto;
+import com.nhnacademy.doorayProject.dto.*;
 import com.nhnacademy.doorayProject.entity.Project;
 import com.nhnacademy.doorayProject.exeption.*;
 import com.nhnacademy.doorayProject.service.ProjectService;
@@ -36,8 +35,10 @@ public class ProjectServiceImpl implements ProjectService {
         return response.getBody();
     }
 
-    public ProjectDto updateProject(Integer projectId, ProjectDto project) {
-        ResponseEntity<ProjectDto> response = adaptor.updateProject(projectId, project);
+
+
+    public UpdateProjectResponse updateProject(Integer projectId, RequestProjectDto project) {
+        ResponseEntity<UpdateProjectResponse> response = adaptor.updateProject(projectId, project);
         if (!response.getStatusCode().is2xxSuccessful()) {
             throw new IllegalArgumentException();
         }
@@ -53,8 +54,8 @@ public class ProjectServiceImpl implements ProjectService {
         return response.getBody();
     }
 
-    public ProjectDto getProject(Integer projectId) {
-        ResponseEntity<ProjectDto> response = adaptor.getProject(projectId);
+    public ProjectNameStatusDto getProject(Integer projectId) {
+        ResponseEntity<ProjectNameStatusDto> response = adaptor.getProject(projectId);
         if (!response.getStatusCode().is2xxSuccessful()) {
             throw new ProjectFoundFailedException();
         }
@@ -68,8 +69,11 @@ public class ProjectServiceImpl implements ProjectService {
         }
         return response.getBody();
     }
-    public ProjectMemberDto deleteProjectMember(Integer projectId) {
-        ResponseEntity<ProjectMemberDto> response = adaptor.deleteProjectMember(projectId);
+
+
+
+    public ProjectMemberDto deleteProjectMember(Integer projectId,ProjectMemberDto projectMemberDto) {
+        ResponseEntity<ProjectMemberDto> response = adaptor.deleteProjectMember(projectId,projectMemberDto);
         if (!response.getStatusCode().is2xxSuccessful()) {
             throw new ProjectDeleteMemberFailedException();
         }

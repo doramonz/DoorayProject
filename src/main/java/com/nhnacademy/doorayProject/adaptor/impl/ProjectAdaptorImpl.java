@@ -2,9 +2,7 @@ package com.nhnacademy.doorayProject.adaptor.impl;
 
 import com.nhnacademy.doorayProject.adaptor.ProjectAdaptor;
 import com.nhnacademy.doorayProject.config.DataBaseUrl;
-import com.nhnacademy.doorayProject.dto.ProjectDto;
-import com.nhnacademy.doorayProject.dto.ProjectMemberDto;
-import com.nhnacademy.doorayProject.dto.UserDto;
+import com.nhnacademy.doorayProject.dto.*;
 import com.nhnacademy.doorayProject.entity.Project;
 import com.nhnacademy.doorayProject.entity.User;
 import com.sun.xml.bind.v2.TODO;
@@ -66,14 +64,14 @@ public class ProjectAdaptorImpl implements ProjectAdaptor {
     //TODO 주소에 userId 넣을것 으로 예상
 
     @Override
-    public ResponseEntity<ProjectDto> updateProject(Integer projectId,ProjectDto project) {
+    public ResponseEntity<UpdateProjectResponse> updateProject(Integer projectId, RequestProjectDto project) {
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
         httpHeaders.setAccept(List.of(MediaType.APPLICATION_JSON));
 
-        HttpEntity<ProjectDto> requestEntity = new HttpEntity<>(project,httpHeaders);
-        ResponseEntity<ProjectDto> exchange = restTemplate.exchange(dataBaseUrl.getAddress() + "/projects/" + projectId + "/update"
-                , HttpMethod.PUT, requestEntity, new ParameterizedTypeReference<ProjectDto>() {
+        HttpEntity<RequestProjectDto> requestEntity = new HttpEntity<>(project,httpHeaders);
+        ResponseEntity<UpdateProjectResponse> exchange = restTemplate.exchange(dataBaseUrl.getAddress() + "/projects/" + projectId + "/update"+user.getUserId()
+                , HttpMethod.PUT, requestEntity, new ParameterizedTypeReference<UpdateProjectResponse>() {
                 });
         return exchange;
     }
@@ -92,14 +90,14 @@ public class ProjectAdaptorImpl implements ProjectAdaptor {
     }
 
     @Override
-    public ResponseEntity<ProjectDto> getProject(int projectId) {
+    public ResponseEntity<ProjectNameStatusDto> getProject(int projectId) {
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
         httpHeaders.setAccept(List.of(MediaType.APPLICATION_JSON));
 
         HttpEntity<String> requestEntity = new HttpEntity<>(httpHeaders);
-        ResponseEntity<ProjectDto> exchange = restTemplate.exchange(dataBaseUrl.getAddress() + "/projects/" + projectId,
-                HttpMethod.GET, requestEntity, new ParameterizedTypeReference<ProjectDto>() {
+        ResponseEntity<ProjectNameStatusDto> exchange = restTemplate.exchange(dataBaseUrl.getAddress() + "/projects/" + projectId,
+                HttpMethod.GET, requestEntity, new ParameterizedTypeReference<ProjectNameStatusDto>() {
                 });
 
         return exchange;
@@ -121,12 +119,12 @@ public class ProjectAdaptorImpl implements ProjectAdaptor {
     }
 
     @Override
-    public ResponseEntity<ProjectMemberDto> deleteProjectMember(Integer projectId) {
+    public ResponseEntity<ProjectMemberDto> deleteProjectMember(Integer projectId,ProjectMemberDto memberDto) {
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
         httpHeaders.setAccept(List.of(MediaType.APPLICATION_JSON));
 
-        HttpEntity<String> requestEntity = new HttpEntity<>(httpHeaders);
+        HttpEntity<ProjectMemberDto> requestEntity = new HttpEntity<>(memberDto,httpHeaders);
         ResponseEntity<ProjectMemberDto> exchange = restTemplate.exchange(dataBaseUrl.getAddress() + "/projects/" + projectId+"/deleteMember",
                 HttpMethod.DELETE, requestEntity, new ParameterizedTypeReference<ProjectMemberDto>() {
                 });

@@ -37,10 +37,12 @@ public class MainPageController {
     }
 
     @PostMapping("/{userId}/list")
-    public List<Project> getProjects(@PathVariable String userId) {
+    public List<ProjectDto> getProjects(@PathVariable String userId) {
 
 
-        return null;
+        return service.getProjects(userId);
     }
+
+
 
 }

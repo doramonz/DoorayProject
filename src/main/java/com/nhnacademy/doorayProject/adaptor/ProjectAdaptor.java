@@ -1,7 +1,6 @@
 package com.nhnacademy.doorayProject.adaptor;
 
-import com.nhnacademy.doorayProject.dto.ProjectDto;
-import com.nhnacademy.doorayProject.dto.ProjectMemberDto;
+import com.nhnacademy.doorayProject.dto.*;
 import com.nhnacademy.doorayProject.entity.Project;
 import org.springframework.http.ResponseEntity;
 
@@ -14,15 +13,15 @@ public interface ProjectAdaptor {
     ResponseEntity<List<ProjectDto>> getProjects(String userId);
 
 
-    ResponseEntity<ProjectDto> updateProject(Integer projectId,ProjectDto project);
+    ResponseEntity<UpdateProjectResponse> updateProject(Integer projectId, RequestProjectDto project);
 
 
     ResponseEntity<String> deleteProject(Integer projectId);
 
-    ResponseEntity<ProjectDto> getProject(int projectId);
+    ResponseEntity<ProjectNameStatusDto> getProject(int projectId);
 
     ResponseEntity<ProjectMemberDto> addProjectMemeber(Integer projectId,ProjectMemberDto projectMemberDto);
 
-    ResponseEntity<ProjectMemberDto> deleteProjectMember(Integer projectId);
+    ResponseEntity<ProjectMemberDto> deleteProjectMember(Integer projectId,ProjectMemberDto projectMemberDto);
 
 }
