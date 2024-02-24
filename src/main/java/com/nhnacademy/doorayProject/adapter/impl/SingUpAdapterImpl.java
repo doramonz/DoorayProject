@@ -1,25 +1,24 @@
-package com.nhnacademy.doorayProject.adaptor.impl;
+package com.nhnacademy.doorayProject.adapter.impl;
 
-import com.nhnacademy.doorayProject.adaptor.SignUpAdaptor;
+import com.nhnacademy.doorayProject.adapter.SignUpAdapter;
 import com.nhnacademy.doorayProject.config.DataBaseUrl;
 import com.nhnacademy.doorayProject.dto.RegisterDto;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.*;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
 @Component
-public class SingUpAdaptorImpl implements SignUpAdaptor {
+public class SingUpAdapterImpl implements SignUpAdapter {
 
     private final RestTemplate restTemplate;
 
     private final DataBaseUrl dataBaseUrl;
 
 
-    public SingUpAdaptorImpl(RestTemplate restTemplate, DataBaseUrl dataBaseUrl) {
+    public SingUpAdapterImpl(RestTemplate restTemplate, DataBaseUrl dataBaseUrl) {
         this.restTemplate = restTemplate;
         this.dataBaseUrl = dataBaseUrl;
     }
