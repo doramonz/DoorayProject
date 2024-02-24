@@ -17,7 +17,7 @@ import java.util.List;
 public class CommentController {
     private final CommentService commentService;
 
-    @GetMapping("/{taskId}")
+    @GetMapping("/{taskId}/comments")
     public String getComments(@RequestParam("taskId")Integer taskId, Model model){
         List<Comment> commentList = commentService.getComments(taskId);
         model.addAttribute("comments", commentList);
