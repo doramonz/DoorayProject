@@ -3,6 +3,7 @@ package com.nhnacademy.doorayProject.controller;
 import com.nhnacademy.doorayProject.dto.UserLoginDto;
 import com.nhnacademy.doorayProject.entity.User;
 import com.nhnacademy.doorayProject.service.LoginService;
+import com.nhnacademy.doorayProject.service.UserInfoService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -20,6 +21,7 @@ import javax.validation.Valid;
 public class LoginController {
 
     private final LoginService loginService;
+    private final UserInfoService userInfoService;
     @GetMapping("/login")
     public String getLoginView(@SessionAttribute(name = "user", required = false) User user) {
         if(user != null) {
@@ -39,8 +41,8 @@ public class LoginController {
             return "login/login";
         }
         //todo 여기에 로그인 성공시 UserInfoDto 받아와서 세션에 추가하는 코드 추가
-//        UserInfoDto userInfoDto = userService.getUserInfo(userLoginDto.getUserId());
-//        request.getSession(true).setAttribute("user", userInfoDto);
+        User user = userInfoService.getUser(userLoginDto.getUserId());
+        request.getSession(true).setAttribute("user", user);
 
         return "redirect:/";
     }
