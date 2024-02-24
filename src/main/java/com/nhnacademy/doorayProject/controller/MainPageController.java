@@ -6,12 +6,14 @@ import com.nhnacademy.doorayProject.dto.*;
 import com.nhnacademy.doorayProject.entity.Project;
 import com.nhnacademy.doorayProject.service.Impl.ProjectServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 
 import java.util.List;
 
-@RestController
+@Controller
 @RequestMapping("/projects")
 public class MainPageController {
 
@@ -49,8 +51,11 @@ public class MainPageController {
     }
 
     @GetMapping("/{userId}/list")
-    public List<ProjectDto> getProjects(@PathVariable String userId) {
-        return service.getProjects(userId);
+    public String getProjects(@PathVariable String userId, Model model) {
+        List<ProjectDto> projectDtos = service.getProjects(userId);
+        model.addAttribute("projectList", projectDtos);
+
+        return "project";
     }
     @PostMapping("/{projectId}/addMember")
     public ProjectMemberDto addMember(@PathVariable Integer projectId, @RequestBody ProjectMemberDto projectMemberDto) {
