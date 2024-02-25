@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta content="ie=edge" http-equiv="x-ua-compatible">
+    <meta name="viewport" content="width=360, user-scalable=no">
+    <link rel="stylesheet" type="text/css" th:href="@{/login_files/css/reset.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/login_files/css/global.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/login_files/css/main-layout.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/login_files/css/form-header.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/login_files/css/form-body.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/login_files/css/form-footer.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/login_files/css/checkbox.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/login_files/css/button.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/login_files/css/bottom-lined-text-field.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/login_files/css/tooltip.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/login_files/css/login_form.css}">
+
+    <title>dooray</title>
+</head>
+<body>
+<div>
+    <div id="main-layout" class="main-layout">
+        <section class="main-layout__section main-layout__info">
+            <img id="main-image" class="main-layout__img" alt="dooray" th:src="@{/login_files/images/doorayWebImage.svg}">
+            <div id="main-notice" class="main-layout__description" style="display: none;"></div>
+        </section>
+        <section class="main-layout__section">
+            <div class="main-layout__contents">
+                <div class="form-header">
+                    <div id="title" class="title">NHN 아카데미에 로그인합니다.</div>
+                </div>
+                <form class="form-body" id="idp-login-form" th:action="@{'/login'}" method="post" th:object="${UserLoginDto}">
+                    <div class="form-item">
+                        <div class="bottom-lined-text-field w80" id="userCode">
+                            <input type="text" name="userId" id="userCode-input" autofocus=""
+                                   placeholder="아이디" maxlength="100">
+                        </div>
+                    </div>
+                    <div class="form-item">
+                        <div class="bottom-lined-text-field w80" id="password">
+                            <input type="password" name="password" id="password-input"
+                                   placeholder="비밀번호" maxlength="100">
+                        </div>
+                    </div>
+                    <div class="form-footer">
+                        <div class="form-footer__primary-button">
+                            <button id="footer-primary-button" class="btn contained" type="submit">
+                                <span>로그인</span>
+                            </button>
+                        </div>
+<!--                        <a id="find-password-link" class="form-footer__link-button"-->
+<!--                           th:href="@{/idp/find-password?domain=nhnacademy.dooray.com&amp;redirectUrl=/auth/signin/finalize?nextUrl=/home}">비밀번호 찾기</a>-->
+                        <a id="register-link" class="form-footer__link-button"
+                           th:href="@{/idp/register?domain=nhnacademy.dooray.com&amp;redirectUrl=/auth/signin/finalize?nextUrl=/home}">회원가입</a>
+                    </div>
+<!--                    <div class="form-item info">-->
+<!--                        <span>계정이 없으신가요?</span><br>-->
+<!--                        <span>조직 관리자에게 문의하여 계정추가를 요청하세요.</span>-->
+<!--                    </div>-->
+                    <div class="form-item info" id="footer-select-org">
+                    </div>
+                </form>
+            </div>
+        </section>
+    </div>
+</div>
+</body>
+</html>
