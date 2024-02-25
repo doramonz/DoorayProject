@@ -27,8 +27,10 @@ public class MainPageController {
     }
 
     /**
+     *
      * @RequestBody부분 thymeleaf 로 html에서 데이터 받을시 @Modelattribute  사용해야함
      */
+    // TODO 세션으로 교체 요망
     @PostMapping("/upload")
     public ProjectDto addProject(@RequestBody ProjectDto project) {
 
