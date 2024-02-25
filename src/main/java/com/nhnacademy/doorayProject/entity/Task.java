@@ -25,7 +25,7 @@ public class Task {
     private String userId;
     @Column(name = "milestone_id")
     private Integer mileStoneId;
-    @Column(name = "tag_id")
+    @Column(name = "task_title")
     private String taskTitle;
     @Column(name = "task_content")
     private String taskContent;
