@@ -3,9 +3,7 @@ package com.nhnacademy.doorayProject.controller;
 
 import com.nhnacademy.doorayProject.adaptor.ProjectAdaptor;
 import com.nhnacademy.doorayProject.dto.*;
-import com.nhnacademy.doorayProject.entity.Project;
 import com.nhnacademy.doorayProject.service.Impl.ProjectServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
