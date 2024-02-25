@@ -3,6 +3,7 @@ package com.nhnacademy.doorayProject.service.impl;
 import com.nhnacademy.doorayProject.adapter.LoginAdapter;
 import com.nhnacademy.doorayProject.dto.UserLoginDto;
 import com.nhnacademy.doorayProject.exeption.UserLoginFailException;
+import com.nhnacademy.doorayProject.service.Impl.LoginServiceImpl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Tasks</title>
+</head>
+<body>
+<div>
+  <h1>TaskView</h1>
+    <a th:text="수정"></a>
+    <a th:text="삭제"></a>
+  <table border="1">
+    <tr>
+      <th>제목</th>
+      <th>작성자</th>
+      <th>상태</th>
+      <th>작성시간</th>
+      <th>마감일</th>
+    </tr>
+    <tr>
+        <td th:text="${task.title}"></td>
+        <td th:text="${userName}"></td>
+        <td th:text="${task.status.toString()}"></td>
+        <td th:text="${task.createAt}"></td>
+        <td th:text="${task.endDate}"></td>
+    </tr>
+  </table>
+    <table>
+        <tr>
+            <th>내용</th>
+        </tr>
+        <tr>
+            <td th:text="${task.content}"></td>
+        </tr>
+    </table>
+    <h4>댓글</h4>
+    <table border="1">
+        <tr>
+            <th>작성자</th>
+            <th>내용</th>
+        </tr>
+        <tr th:each="comment : ${comments}">
+            <td th:text="${comment.userName}"></td>
+            <td th:text="${comment.content}"></td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

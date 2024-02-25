@@ -7,10 +7,9 @@ import lombok.Setter;
 
 import java.util.List;
 
-@AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-public class UserInfoListDto {
-    private List<UserInfoDto> userInfoList;
+public class TaskSimpleInfoListDto {
+    private List<TaskSimpleInfoDto> tasks;
 }

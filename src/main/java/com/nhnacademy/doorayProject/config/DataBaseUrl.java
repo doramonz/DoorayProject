@@ -4,7 +4,8 @@ import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 @Data
-@ConfigurationProperties(prefix = "com.nhnacademy.account")
+@ConfigurationProperties(prefix = "com.nhnacademy")
 public class DataBaseUrl {
-    private String address;
+    private String taskAddress;
+    private String AccountAddress;
 }

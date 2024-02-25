@@ -1,4 +1,4 @@
-package com.nhnacademy.doorayProject.service.impl;
+package com.nhnacademy.doorayProject.service.Impl;
 
 import com.nhnacademy.doorayProject.adapter.LoginAdapter;
 import com.nhnacademy.doorayProject.adapter.UserInfoAdapter;

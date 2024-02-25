@@ -1,6 +1,5 @@
 package com.nhnacademy.doorayProject.config;
 
-import com.nhnacademy.doorayProject.config.handler.SessionHandler;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -13,6 +12,8 @@ public class WebMvcConfig implements WebMvcConfigurer {
                 .addPathPatterns("/**")
                 .excludePathPatterns("/login_files/**")
                 .excludePathPatterns("/login/**")
-                .excludePathPatterns("/account/register/**");
+                .excludePathPatterns("/accounts/**")
+                .excludePathPatterns("/view.html")
+                .excludePathPatterns("/signUp.html");
     }
 }

@@ -23,7 +23,7 @@ public class UserInfoAdapterImpl implements UserInfoAdapter {
         headers.setContentType(MediaType.APPLICATION_JSON);
         headers.setAccept(List.of(MediaType.APPLICATION_JSON));
         HttpEntity<String> request = new HttpEntity<>(headers);
-        return restTemplate.exchange(dataBaseUrl.getAddress() + "/accounts/" + userId, HttpMethod.GET, request, UserInfoDto.class);
+        return restTemplate.exchange(dataBaseUrl.getAccountAddress() + "/accounts/" + userId, HttpMethod.GET, request, UserInfoDto.class);
     }
 
     @Override
@@ -32,7 +32,7 @@ public class UserInfoAdapterImpl implements UserInfoAdapter {
         headers.setContentType(MediaType.APPLICATION_JSON);
         headers.setAccept(List.of(MediaType.APPLICATION_JSON));
         HttpEntity<UserIdListDto> request = new HttpEntity<>(new UserIdListDto(userIdList), headers);
-        return restTemplate.postForEntity(dataBaseUrl.getAddress() + "/accounts/list", request, UserInfoListDto.class);
+        return restTemplate.postForEntity(dataBaseUrl.getAccountAddress() + "/accounts/list", request, UserInfoListDto.class);
     }
 
     @Override
@@ -41,6 +41,6 @@ public class UserInfoAdapterImpl implements UserInfoAdapter {
         headers.setContentType(MediaType.APPLICATION_JSON);
         headers.setAccept(List.of(MediaType.APPLICATION_JSON));
         HttpEntity<String> request = new HttpEntity<>(headers);
-        return restTemplate.exchange(dataBaseUrl.getAddress() + "/accounts/list", HttpMethod.GET, request, UserInfoListDto.class);
+        return restTemplate.exchange(dataBaseUrl.getAccountAddress() + "/accounts/list", HttpMethod.GET, request, UserInfoListDto.class);
     }
 }

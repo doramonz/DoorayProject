@@ -5,12 +5,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
-
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
-public class UserInfoListDto {
-    private List<UserInfoDto> userInfoList;
+public class CommentInfoDto {
+    private Integer commentId;
+    private String userId;
+    private Integer taskId;
+    private String commentContent;
 }

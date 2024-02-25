@@ -2,7 +2,7 @@ package com.nhnacademy.doorayProject.service;
 
 import com.nhnacademy.doorayProject.adapter.SignUpAdapter;
 import com.nhnacademy.doorayProject.dto.RegisterDto;
-import com.nhnacademy.doorayProject.service.impl.SignUpServiceImpl;
+import com.nhnacademy.doorayProject.service.Impl.SignUpServiceImpl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;

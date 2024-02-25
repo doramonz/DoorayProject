@@ -7,11 +7,13 @@ import com.nhnacademy.doorayProject.service.UserInfoService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
@@ -23,10 +25,11 @@ public class LoginController {
     private final LoginService loginService;
     private final UserInfoService userInfoService;
     @GetMapping("/login")
-    public String getLoginView(@SessionAttribute(name = "user", required = false) User user) {
-        if(user != null) {
-            return "redirect:/";
+    public String getLoginView(@SessionAttribute(name = "userId", required = false) String userId, Model model) {
+        if(userId != null) {
+            return "redirect:/main";
         }
+        model.addAttribute("userLoginDto", new UserLoginDto());
         return "login/login";
     }
 
@@ -40,10 +43,19 @@ public class LoginController {
         } catch (Exception e) {
             return "login/login";
         }
-        //todo 여기에 로그인 성공시 UserInfoDto 받아와서 세션에 추가하는 코드 추가
-        User user = userInfoService.getUser(userLoginDto.getUserId());
-        request.getSession(true).setAttribute("user", user);
+        request.getSession(true).setAttribute("userId", userLoginDto.getUserId());
 
-        return "redirect:/";
+        return "redirect:/main";
+    }
+
+    @GetMapping("/logout")
+    public String logout(HttpServletRequest request) {
+        request.getSession().invalidate();
+        for(Cookie c : request.getCookies()) {
+            if(c.getName().equals("JSESSIONID")) {
+                c.setMaxAge(0);
+            }
+        }
+        return "redirect:/login";
     }
 }

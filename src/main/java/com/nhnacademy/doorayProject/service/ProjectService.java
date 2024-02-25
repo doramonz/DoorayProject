@@ -1,22 +1,29 @@
 package com.nhnacademy.doorayProject.service;
 
 import com.nhnacademy.doorayProject.dto.*;
+import com.nhnacademy.doorayProject.entity.Project;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
 public interface ProjectService {
-    public ProjectDto addProject(ProjectDto project);
+//    public ProjectDto addProject(ProjectDto project);
+//
+//    public List<ProjectDto> getProjects(String userId);
+//
+//    public UpdateProjectResponse updateProject(Integer projectId, RequestProjectDto project);
+//
+//    public String deleteProject(Integer projectId);
+//
+//    public ProjectNameStatusDto getProject(Integer projectId);
+//
+//    public ProjectMemberDto addProjectMemeber(Integer projectId, ProjectMemberDto projectMemberDto);
+//
+//    public ProjectMemberDto deleteProjectMember(Integer projectId,ProjectMemberDto projectMemberDto);
 
-    public List<ProjectDto> getProjects(String userId);
+    public List<Project> getProjects(String userId);
 
-    public UpdateProjectResponse updateProject(Integer projectId, RequestProjectDto project);
+    void deleteProject(Integer projectId);
 
-    public String deleteProject(Integer projectId);
-
-    public ProjectNameStatusDto getProject(Integer projectId);
-
-    public ProjectMemberDto addProjectMemeber(Integer projectId, ProjectMemberDto projectMemberDto);
-
-    public ProjectMemberDto deleteProjectMember(Integer projectId,ProjectMemberDto projectMemberDto);
+    Object getProjectInfo(Integer projectId);
 }

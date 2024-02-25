@@ -17,7 +17,7 @@ public class Comment {
      private Integer commentId;
 
     @Column(name = "user_id")
-    private Integer user;
+    private String userId;
 
     @ManyToOne
     @JoinColumn(name = "task_id")

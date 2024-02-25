@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Projects</title>
+</head>
+<body>
+<div>
+    <h1>Projects</h1>
+    <h4>
+        <a th:href="@{/logout}">Logout</a>
+    </h4>
+    <table border="1">
+        <tr>
+            <th>Project Name</th>
+            <th>Project Status</th>
+            <th>Delete</th>
+            <th>Update</th>
+        </tr>
+        <tr th:each="project : ${projects}">
+            <td><a th:text="${project.name}" th:href="@{'/main/project/'+${project.projectId}}"></a></td>
+            <td th:text="${project.status}"></td>
+            <td><a th:href="@{'/project/'+${project.projectId}+'/delete'}">Delete</a></td>
+            <td><a th:href="@{'/project/'+${project.projectId}+'/update'}">Update</a></td>
+        </tr>
+        <tr>
+            <td>
+                <a th:href="@{/project/create}">Create Project</a>
+            </td>
+        </tr>
+    </table>
+    <form>
+        <input type="text" id="comment" name="projectName" placeholder="Project Name">
+        <label for="comment">댓글</label>
+        <input type="submit" value="Create Project">
+    </form>
+</div>
+</body>
+</html>

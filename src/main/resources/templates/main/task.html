@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Tasks</title>
+</head>
+<body>
+<div>
+    <h1>Tasks</h1>
+    <table border="1">
+        <tr>
+            <th>제목</th>
+            <th>작성자</th>
+            <th>상태</th>
+            <th>삭제</th>
+        </tr>
+        <tr th:each="task : ${tasks}">
+            <td><a th:text="${task.title}" th:href="@{'/main/project/task/'+${task.taskId}}"></a></td>
+            <td th:text="${task.createUserName}"></td>
+            <td th:text="${task.status.toString()}"></td>
+            <td><a th:href="@{'/project/task/delete/'+${task.taskId}}">Delete</a></td>
+        </tr>
+        <tr>
+            <td>
+                <a th:href="@{'/project/'+${projectId}+'/task/create'}">Create Task</a>
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

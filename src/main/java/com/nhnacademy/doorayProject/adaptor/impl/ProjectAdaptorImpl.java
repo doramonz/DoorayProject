@@ -40,7 +40,7 @@ public class ProjectAdaptorImpl implements ProjectAdaptor {
         httpHeaders.setAccept(List.of(MediaType.APPLICATION_JSON));
         HttpEntity<ProjectDto> requestEntity = new HttpEntity<>(project, httpHeaders);
 
-        ResponseEntity<ProjectDto> exchange = restTemplate.exchange(dataBaseUrl.getAddress() + "/projects/upload", HttpMethod.POST, requestEntity, new ParameterizedTypeReference<ProjectDto>() {
+        ResponseEntity<ProjectDto> exchange = restTemplate.exchange(dataBaseUrl.getTaskAddress() + "/projects/upload", HttpMethod.POST, requestEntity, new ParameterizedTypeReference<ProjectDto>() {
                 });
 
         return exchange;
@@ -54,7 +54,7 @@ public class ProjectAdaptorImpl implements ProjectAdaptor {
         httpHeaders.setAccept(List.of(MediaType.APPLICATION_JSON));
 
         HttpEntity<String> requestEntity = new HttpEntity<>(httpHeaders);
-        ResponseEntity<List<ProjectDto>> exchange = restTemplate.exchange(dataBaseUrl.getAddress()
+        ResponseEntity<List<ProjectDto>> exchange = restTemplate.exchange(dataBaseUrl.getTaskAddress()
                         + "/projects/" + userId + "/list"
                 , HttpMethod.GET, requestEntity, new ParameterizedTypeReference<List<ProjectDto>>() {
                 });
@@ -70,7 +70,7 @@ public class ProjectAdaptorImpl implements ProjectAdaptor {
         httpHeaders.setAccept(List.of(MediaType.APPLICATION_JSON));
 
         HttpEntity<RequestProjectDto> requestEntity = new HttpEntity<>(project,httpHeaders);
-        ResponseEntity<UpdateProjectResponse> exchange = restTemplate.exchange(dataBaseUrl.getAddress() + "/projects/" + projectId + "/update/"+userId
+        ResponseEntity<UpdateProjectResponse> exchange = restTemplate.exchange(dataBaseUrl.getTaskAddress() + "/projects/" + projectId + "/update/"+userId
                 , HttpMethod.PUT, requestEntity, new ParameterizedTypeReference<UpdateProjectResponse>() {
                 });
         return exchange;
@@ -91,7 +91,7 @@ public class ProjectAdaptorImpl implements ProjectAdaptor {
         httpHeaders.setAccept(List.of(MediaType.APPLICATION_JSON));
 
         HttpEntity<UserDto> requestEntity = new HttpEntity<>(httpHeaders);
-        ResponseEntity<String> exchange = restTemplate.exchange(dataBaseUrl.getAddress() + "/projects/" + projectId + "/delete",
+        ResponseEntity<String> exchange = restTemplate.exchange(dataBaseUrl.getTaskAddress() + "/projects/" + projectId + "/delete",
                 HttpMethod.DELETE, requestEntity, new ParameterizedTypeReference<String>() {
                 });
         return exchange;
@@ -104,7 +104,7 @@ public class ProjectAdaptorImpl implements ProjectAdaptor {
         httpHeaders.setAccept(List.of(MediaType.APPLICATION_JSON));
 
         HttpEntity<String> requestEntity = new HttpEntity<>(httpHeaders);
-        ResponseEntity<ProjectNameStatusDto> exchange = restTemplate.exchange(dataBaseUrl.getAddress() + "/projects/" + projectId,
+        ResponseEntity<ProjectNameStatusDto> exchange = restTemplate.exchange(dataBaseUrl.getTaskAddress() + "/projects/" + projectId,
                 HttpMethod.GET, requestEntity, new ParameterizedTypeReference<ProjectNameStatusDto>() {
                 });
 
@@ -118,7 +118,7 @@ public class ProjectAdaptorImpl implements ProjectAdaptor {
         httpHeaders.setAccept(List.of(MediaType.APPLICATION_JSON));
         HttpEntity<ProjectMemberDto> requestEntity = new HttpEntity<>(projectMemberDto,httpHeaders);
 
-        ResponseEntity<ProjectMemberDto> exchange = restTemplate.exchange(dataBaseUrl.getAddress() + "/projects/" + projectId+"/addMember",
+        ResponseEntity<ProjectMemberDto> exchange = restTemplate.exchange(dataBaseUrl.getTaskAddress() + "/projects/" + projectId+"/addMember",
                 HttpMethod.POST, requestEntity, new ParameterizedTypeReference<ProjectMemberDto>() {
                 });
 
@@ -133,7 +133,7 @@ public class ProjectAdaptorImpl implements ProjectAdaptor {
         httpHeaders.setAccept(List.of(MediaType.APPLICATION_JSON));
 
         HttpEntity<ProjectMemberDto> requestEntity = new HttpEntity<>(memberDto,httpHeaders);
-        ResponseEntity<ProjectMemberDto> exchange = restTemplate.exchange(dataBaseUrl.getAddress() + "/projects/" + projectId+"/deleteMember",
+        ResponseEntity<ProjectMemberDto> exchange = restTemplate.exchange(dataBaseUrl.getTaskAddress() + "/projects/" + projectId+"/deleteMember",
                 HttpMethod.DELETE, requestEntity, new ParameterizedTypeReference<ProjectMemberDto>() {
                 });
 

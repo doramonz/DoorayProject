@@ -32,7 +32,7 @@ public class SingUpAdapterImpl implements SignUpAdapter {
 
         HttpEntity<RegisterDto> requestEntity = new HttpEntity<>(registerDto, httpHeaders);
 
-        ResponseEntity<RegisterDto> response = restTemplate.exchange(dataBaseUrl.getAddress()+"/accounts/register",
+        ResponseEntity<RegisterDto> response = restTemplate.exchange(dataBaseUrl.getAccountAddress()+"/accounts/register",
                 HttpMethod.POST,
                 requestEntity,
                 new ParameterizedTypeReference<RegisterDto>() {
