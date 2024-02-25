@@ -2,6 +2,7 @@ package com.nhnacademy.doorayProject.adaptor.impl;
 
 import com.nhnacademy.doorayProject.adaptor.ProjectAdaptor;
 import com.nhnacademy.doorayProject.config.DataBaseUrl;
+import com.nhnacademy.doorayProject.config.TaskAddress;
 import com.nhnacademy.doorayProject.dto.*;
 import com.nhnacademy.doorayProject.entity.Project;
 import com.nhnacademy.doorayProject.entity.User;
@@ -19,14 +20,14 @@ import java.util.List;
 public class ProjectAdaptorImpl implements ProjectAdaptor {
 
     private final RestTemplate restTemplate;
-    private final DataBaseUrl dataBaseUrl;
+    private final TaskAddress dataBaseUrl;
 //    @Autowired
 //    private HttpServletRequest request;
 //
 //    private HttpSession session;
 //    private UserDto user;
 
-    public ProjectAdaptorImpl(RestTemplate restTemplate, DataBaseUrl dataBaseUrl) {
+    public ProjectAdaptorImpl(RestTemplate restTemplate, TaskAddress dataBaseUrl) {
         this.restTemplate = restTemplate;
         this.dataBaseUrl = dataBaseUrl;
 //         session = request.getSession();

@@ -35,8 +35,18 @@ public class MainPageController {
         return service.addProject(project);
     }
 
+    @GetMapping("/{projectId}/update")
+    public String updateForm(@PathVariable Integer projectId, Model model) {
+
+        model.addAttribute("project",service.getProject(projectId));
+
+        return "updateFrom";
+    }
+
     @PutMapping("/{projectId}/update/{userId}")
     public UpdateProjectResponse updateProject(@PathVariable Integer projectId, @RequestBody RequestProjectDto projectDto, @PathVariable String userId) {
+
+
         return service.updateProject(projectId, projectDto, userId);
     }
 

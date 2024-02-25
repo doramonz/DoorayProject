@@ -22,8 +22,8 @@ public class Task {
     @Column(name = "task_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer taskId;
-    @Column(name = "project_id")
-    private Integer projectId;
+//    @Column(name = "project_id")
+//    private Integer projectId;
     @Column(name = "user_id")
     private String userId;
     @Column(name = "milestone_id")

@@ -150,8 +150,11 @@
 <script src="sidebars.js"></script>
 <main class="d-flex flex-nowrap">
 
+<!--    <div hidden="hidden" th:object="${session.user}">-->
+
+
     <div class="flex-shrink-0 p-3" style="width: 280px;" th:width="20">
-        <a href="/" class="d-flex align-items-center pb-3 mb-3 link-body-emphasis text-decoration-none border-bottom">
+        <a href="/static" class="d-flex align-items-center pb-3 mb-3 link-body-emphasis text-decoration-none border-bottom">
             <svg class="bi pe-none me-2" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
             <span class="fs-5 fw-semibold">Collapsible</span>
         </a>
@@ -161,7 +164,7 @@
                     내 정보
                 </button>
                 <div class="collapse show" id="home-collapse">
-                    <a>아이디 넣는곳 </a></br>
+                   <p>이름 : <span ></span></p></br>
                     <a>권한 넣는곳</a>
                 </div>
             </li>
@@ -179,7 +182,7 @@
                                dataProjectId = "${getProject.getProjectId()}"
                                class="projectLink"
                             />
-                        </li>
+                            <a th:href="'/projects/' + ${getProject.getProjectId()} + '/update/' + ${session.user.getUserId()}" class="updateButton">수정</a>                        </li>
 
                     </ul>
                 </div>

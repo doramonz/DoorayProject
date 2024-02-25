@@ -13,10 +13,16 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @EqualsAndHashCode
+@Entity(name = "dooray_user")
 public class User {
+    @Id
     private String userId;
+    @Column(name = "password")
     private String password;
+    @Column(name = "user_name")
     private String userName;
+    @Column(name = "email")
     private String email;
+    @Column(name = "latest_login")
     private LocalDateTime latestLogin;
 }
