@@ -60,6 +60,16 @@ public class MainPageController {
         return service.getProject(projectId);
     }
 
+    @PostMapping("/{userId}/list")
+    public String postProject(@PathVariable String userId, Model model) {
+
+        List<ProjectDto> projectDtos = service.getProjects(userId);
+        model.addAttribute("projectList", projectDtos);
+
+        return "project";
+
+    }
+
     @GetMapping("/{userId}/list")
     public String getProjects(@PathVariable String userId, Model model) {
         List<ProjectDto> projectDtos = service.getProjects(userId);
